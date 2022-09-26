@@ -1,12 +1,13 @@
 import React from 'react';
 import { Col, Row } from 'antd';
+import './MovieList.module.css';
 
 import CardMovie from '../CardMovie/CardMovie';
 
 const MoviesList = ({ movies }) => {
   const elements = movies.map((item) => {
     return (
-      <Col key={item.id}>
+      <Col span={12} key={item.id}>
         <CardMovie itemProps={item} />
       </Col>
     );
@@ -14,7 +15,7 @@ const MoviesList = ({ movies }) => {
 
   return (
     <>
-      <Row>{elements}</Row>
+      <Row gutter={[36, 34]}>{elements}</Row>
     </>
   );
 };
