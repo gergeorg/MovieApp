@@ -7,17 +7,26 @@ import style from './App.module.css';
 
 const App = () => {
   const [movies, setMovies] = useState([]);
-  // console.log('movies: ', movies);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    getPopular().then((data) => {
-      setMovies(data);
-    });
+    getPopular()
+      .then((data) => {
+        setMovies(data);
+        setLoading(false);
+      })
+      .catch(() => onError());
   }, []);
+
+  const onError = () => {
+    setError(true);
+    setLoading(false);
+  };
 
   return (
     <div className={style.App}>
-      <MovieList movies={movies} />
+      <MovieList movies={movies} loading={loading} error={error} />
     </div>
   );
 };

@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React from 'react';
 import { format } from 'date-fns';
 import { Image, Typography } from 'antd';
@@ -7,7 +6,7 @@ import style from './CardMovie.module.css';
 import fallbackImg from './no-image.webp';
 
 const CardMovie = ({ itemProps }) => {
-  const { id, title, overview, release_date, poster_path } = itemProps;
+  const { title, overview, release_date, poster_path } = itemProps;
 
   const { Title, Text, Paragraph } = Typography;
 
