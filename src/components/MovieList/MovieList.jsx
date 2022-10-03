@@ -1,10 +1,14 @@
-import React from 'react';
-import { Col, Row, Spin, Alert } from 'antd';
+import React, { useEffect } from 'react';
+import { Col, Row, Spin, Alert, Pagination } from 'antd';
 import './MovieList.module.css';
 
 import CardMovie from '../CardMovie/CardMovie';
 
-const MoviesList = ({ movies, error, loading }) => {
+const MoviesList = ({ movies, error, loading, searchMovie, search, page, choosePage, totalPages }) => {
+  useEffect(() => {
+    searchMovie(search, page);
+  }, [search, page]);
+
   const elements = movies.map((item) => {
     return (
       <Col span={12} key={item.id}>
@@ -22,6 +26,17 @@ const MoviesList = ({ movies, error, loading }) => {
       ) : (
         <>
           <Row gutter={[36, 34]}>{elements}</Row>
+
+          <Pagination
+            current={page}
+            onChange={(current) => {
+              choosePage(current);
+            }}
+            defaultCurrent={1}
+            total={totalPages}
+            pageSize={20}
+            showSizeChanger={false}
+          />
         </>
       )}
     </>
