@@ -1,3 +1,7 @@
+.content {
+	text-align: center;
+}
+
 .grid {
 	margin-bottom: 36px;
 }
@@ -23,3 +27,4 @@
 .ant-pagination-item-link {
 	border: none !important;
 }
+

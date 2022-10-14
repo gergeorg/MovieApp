@@ -11,11 +11,11 @@ import fallbackImg from './no-image.webp';
 const CardMovie = ({ itemProps, rateMovies }) => {
   const { id, title, overview, release_date, poster_path, vote_average, genre_ids } = itemProps;
 
-  const { Title, Text, Paragraph } = Typography;
+  const { Title, Paragraph } = Typography;
 
   const descriptionShortener = (description) => {
     const overviewArr = description.split(' ');
-    overviewArr.length = 12;
+    overviewArr.length = 10;
     let shortOverview = overviewArr.join(' ');
     shortOverview += ' ...';
     return shortOverview;
@@ -59,7 +59,7 @@ const CardMovie = ({ itemProps, rateMovies }) => {
         width={183}
         height={281}
         alt={`Постер фильма ${title}`}
-        src={`https://image.tmdb.org/t/p/original/${poster_path}`}
+        src={`https://image.tmdb.org/t/p/original${poster_path}`}
         fallback={fallbackImg}
       />
 

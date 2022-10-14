@@ -13,8 +13,6 @@ const getMovie = async (url, query, page) => {
 
   let requestAddress = `${BASE_URL}${url}?api_key=${API_KEY}${LANGUAGE}&page=${page}`;
 
-  //${BASE_URL}search/company?api_key=<<api_key>>&page=1
-
   if (url === 'search/movie') {
     requestAddress += `&query=${query}&page=${page}&include_adult=false`;
   }

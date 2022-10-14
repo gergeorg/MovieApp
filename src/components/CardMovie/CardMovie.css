@@ -1,7 +1,11 @@
 .card {
 	display: flex;
-	/* height: 281px; */
+	height: 281px;
 	box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
+}
+
+.ant-typography {
+	margin-bottom: 0 !important;
 }
 
 .overview {
@@ -9,22 +13,17 @@
 	font-size: 12px;
 	line-height: 22px;
 	color: #000000;
-	
-	margin: 0; /* Убираем внешний отступ */
-	-webkit-line-clamp: 6; /* Число отображаемых строк */
-	display: -webkit-box; /* Включаем флексбоксы */
-	-webkit-box-orient: vertical; /* Вертикальная ориентация */
-	overflow: hidden;/* Обрезаем всё за пределами блока */
 }
 
 .ant-image, .ant-image-error {
-	flex-basis: 183px;
+	min-width: 183px;
 	height: 100%;
 }
 
 .wrapper {
-	flex-basis: 58%;
+	width: 100%;
 	padding: 10px 20px;
+	text-align: left;
 }
 
 .card_headline {
@@ -77,4 +76,3 @@
 .rating .circle-green {
 	border-color: #66E900;
 }
-
