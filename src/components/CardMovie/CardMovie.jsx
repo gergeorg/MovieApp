@@ -15,7 +15,7 @@ const CardMovie = ({ itemProps, rateMovies }) => {
 
   const descriptionShortener = (description) => {
     const overviewArr = description.split(' ');
-    overviewArr.length = 10;
+    overviewArr.length = 15;
     let shortOverview = overviewArr.join(' ');
     shortOverview += ' ...';
     return shortOverview;
@@ -56,37 +56,36 @@ const CardMovie = ({ itemProps, rateMovies }) => {
   return (
     <div className='card'>
       <Image
-        width={183}
-        height={281}
+        // width={183}
+        // height={281}
         alt={`Постер фильма ${title}`}
         src={`https://image.tmdb.org/t/p/original${poster_path}`}
         fallback={fallbackImg}
       />
 
-      <div className='wrapper'>
-        <div className='card_header'>
-          <div className='card_headline'>
-            <Title className='title' level={5}>
-              {title}
-            </Title>
-            <div className='rating'>
-              <div className={ratingColor}>
-                <span className='ratingCounter'>{vote_average.toFixed(1)}</span>
-              </div>
+      <div className='cardHeader'>
+        <div className='card_headline'>
+          <Title className='title' level={5}>
+            {title}
+          </Title>
+          <div className='rating'>
+            <div className={ratingColor}>
+              <span className='ratingCounter'>{vote_average.toFixed(1)}</span>
             </div>
           </div>
-
-          <div className='release'>
-            {release_date ? format(new Date(release_date), 'MMMM d, y') : 'дата выхода неизвестна'}
-          </div>
-          <span className='genres'>{genres}</span>
         </div>
 
-        <Paragraph className='overview'>{descriptionShortener(overview)}</Paragraph>
+        <div className='release'>
+          {release_date ? format(new Date(release_date), 'MMMM d, y') : 'дата выхода неизвестна'}
+        </div>
+        <span className='genres'>{genres}</span>
+      </div>
+
+      <div className='cardFooter'>
+        <Paragraph className='description'>{descriptionShortener(overview)}</Paragraph>
 
         <div className='rate'>
           <Rate
-            style={{ fontSize: 15, position: 'absolute', bottom: 20 }}
             count={10}
             allowHalf
             allowClear={false}

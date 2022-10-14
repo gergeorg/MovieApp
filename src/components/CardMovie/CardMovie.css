@@ -1,14 +1,17 @@
 .card {
-	display: flex;
 	height: 281px;
 	box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09);
 }
+
+/* .test {
+	display: flex;
+} */
 
 .ant-typography {
 	margin-bottom: 0 !important;
 }
 
-.overview {
+.description {
 	font-weight: 400;
 	font-size: 12px;
 	line-height: 22px;
@@ -16,13 +19,24 @@
 }
 
 .ant-image, .ant-image-error {
-	min-width: 183px;
-	height: 100%;
+	float: left;
+	max-width: 183px;
+	min-height: 281px;
+	margin-right: 20px;	
 }
 
-.wrapper {
-	width: 100%;
-	padding: 10px 20px;
+.ant-image-img {
+	min-height: 100%;
+}
+
+.cardHeader {
+	padding-top: 10px;
+	padding-right: 10px;
+	text-align: left;
+}
+
+.cardFooter {
+	padding-right: 10px;
 	text-align: left;
 }
 
@@ -44,6 +58,13 @@
 	display: flex;
 	flex-wrap: wrap;
 	margin-bottom: 10px;
+}
+
+.ant-rate {
+	font-size: 15;
+	position: absolute;
+	bottom: 20px;
+	right: 40px;
 }
 
 .rating .circle {
@@ -75,4 +96,27 @@
 
 .rating .circle-green {
 	border-color: #66E900;
+}
+
+
+@media (max-width: 576px) {
+	.card {
+		height: 250px;
+	}
+
+	.ant-image,
+	.ant-image-error {
+		max-width: 60px;
+		min-height: 90px;
+		margin-top: 6px;
+		margin-left: 9px;
+	}
+
+	.ant-image-img {
+		min-height: 90px;
+	}
+
+	.description {
+		padding-left: 10px;
+	}
 }
