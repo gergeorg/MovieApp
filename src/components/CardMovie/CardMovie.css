@@ -42,13 +42,39 @@
 }
 
 .genres {
-	display: inline-block;
-	margin-bottom: 7px;
-	padding: 2px 4px;
-	background-color: #FAFAFA;
-	border: 1px solid #D9D9D9;
-	border-radius: 2px;
-	font-weight: 400;
-	font-size: 12px;
-	line-height: 15px;
+	display: flex;
+	flex-wrap: wrap;
+	margin-bottom: 10px;
 }
+
+.rating .circle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 32px;
+	height: 32px;
+	border: 2px solid #E9D100;
+	border-radius: 50px;
+}
+
+.rating .circle .ratingCounter {
+	font-size: 12px;
+	line-height: 24px;
+}
+
+.rating .circle-red {
+	border-color: #E90000;
+}
+
+.rating .circle-orange {
+	border-color: #E97E00;
+}
+
+.rating .circle-yellow {
+	border-color: #E9D100;
+}
+
+.rating .circle-green {
+	border-color: #66E900;
+}
+

@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { Col, Row, Spin, Alert, Pagination } from 'antd';
-import './MovieList.module.css';
 
 import CardMovie from '../CardMovie/CardMovie';
 
-const MoviesList = ({ movies, error, loading, searchMovie, search, page, choosePage, totalPages }) => {
+import './MovieList.css';
+
+const MoviesList = ({ movies, error, loading, searchMovie, search, page, choosePage, totalPages, rateMovies }) => {
   useEffect(() => {
     searchMovie(search, page);
   }, [search, page]);
@@ -12,7 +13,7 @@ const MoviesList = ({ movies, error, loading, searchMovie, search, page, chooseP
   const elements = movies.map((item) => {
     return (
       <Col span={12} key={item.id}>
-        <CardMovie itemProps={item} />
+        <CardMovie itemProps={item} rateMovies={rateMovies} />
       </Col>
     );
   });
@@ -25,9 +26,12 @@ const MoviesList = ({ movies, error, loading, searchMovie, search, page, chooseP
         <Spin size='large' />
       ) : (
         <>
-          <Row gutter={[36, 34]}>{elements}</Row>
+          <Row className='grid' gutter={[36, 34]}>
+            {elements}
+          </Row>
 
           <Pagination
+            className='pagination'
             current={page}
             onChange={(current) => {
               choosePage(current);

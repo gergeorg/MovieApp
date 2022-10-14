@@ -1,0 +1,25 @@
+.grid {
+	margin-bottom: 36px;
+}
+
+.pagination {
+	text-align: center;
+}
+
+.ant-pagination-item {
+	border: none !important;
+	border-radius: 4px !important;	
+}
+
+.ant-pagination-item-active {
+	background: #1890FF !important;
+	
+}
+
+.ant-pagination-item-active a {
+	color: #fff !important;
+}
+
+.ant-pagination-item-link {
+	border: none !important;
+}

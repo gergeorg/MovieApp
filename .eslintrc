@@ -34,7 +34,7 @@
 		"no-console": "warn",
 		"no-plusplus": "off",
 		"max-len": ["error", 150, {"ignoreUrls": true}],
-    "comma-dangle": ["error", "always-multiline"],
+    "comma-dangle": ["error", "only-multiline"],
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
     "react/react-in-jsx-scope": "off",

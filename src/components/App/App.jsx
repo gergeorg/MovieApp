@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 
 import MovieList from '../MovieList/MovieList';
 import MovieSearch from '../MovieSearch/MovieSearch';
-import { getPopular, getSearch } from '../../services/services_api';
+import Tab from '../Tab/Tab';
+import { getPopular, getSearch, getGuestSession, getGenres, rateMovie, getRated } from '../../services/services_api';
+import { GenresContext } from '../../context/GenresContext/GenresContext';
 
 import style from './App.module.css';
 
@@ -14,6 +16,8 @@ const App = () => {
   const [search, setSearch] = useState('return');
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [session, setSession] = useState('');
+  const [genresState, setGenres] = useState([]);
 
   useEffect(() => {
     getPopular(page)
@@ -24,6 +28,17 @@ const App = () => {
       })
       .catch(() => onError());
   }, [page]);
+
+  useEffect(() => {
+    getGenres().then((data) => {
+      setGenres(data.genres);
+    });
+
+    getGuestSession().then((data) => {
+      setSession(data.guest_session_id);
+    });
+    localStorage.clear();
+  }, []);
 
   const onError = () => {
     setError(true);
@@ -47,21 +62,36 @@ const App = () => {
     setPage(current);
   };
 
-  return (
-    <div className={style.App}>
-      <MovieSearch searchMovie={searchMovie} />
+  const rateMovies = (movieId, rating) => {
+    rateMovie(movieId, rating, session);
+  };
 
-      <MovieList
-        movies={movies}
-        loading={loading}
-        error={error}
-        search={search}
-        page={page}
-        totalPages={totalPages}
-        choosePage={choosePage}
-        searchMovie={searchMovie}
-      />
-    </div>
+  const getRate = () => {
+    getRated(session).then((data) => {
+      setMovies(data.results);
+      setTotalPages(data.total_results);
+    });
+  };
+
+  return (
+    <GenresContext.Provider value={genresState}>
+      <div className={style.App}>
+        <Tab getRate={getRate} searchMovie={searchMovie} search={search} />
+        <MovieSearch searchMovie={searchMovie} />
+
+        <MovieList
+          movies={movies}
+          loading={loading}
+          error={error}
+          search={search}
+          page={page}
+          totalPages={totalPages}
+          choosePage={choosePage}
+          searchMovie={searchMovie}
+          rateMovies={rateMovies}
+        />
+      </div>
+    </GenresContext.Provider>
   );
 };
 

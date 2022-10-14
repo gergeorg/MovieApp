@@ -2,7 +2,7 @@ import React from 'react';
 import { Input } from 'antd';
 import { debounce } from 'lodash';
 
-import './MovieSearch.module.css';
+import style from './MovieSearch.module.css';
 
 const MovieSearch = ({ searchMovie }) => {
   const fn = (input) => {
@@ -18,6 +18,7 @@ const MovieSearch = ({ searchMovie }) => {
   return (
     <>
       <Input
+        className={style.input}
         placeholder={'Type to search...'}
         onChange={(e) => {
           debouncedFn(e);
