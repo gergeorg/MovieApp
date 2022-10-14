@@ -15,7 +15,7 @@ const CardMovie = ({ itemProps, rateMovies }) => {
 
   const descriptionShortener = (description) => {
     const overviewArr = description.split(' ');
-    overviewArr.length = 15;
+    overviewArr.length = 12;
     let shortOverview = overviewArr.join(' ');
     shortOverview += ' ...';
     return shortOverview;
